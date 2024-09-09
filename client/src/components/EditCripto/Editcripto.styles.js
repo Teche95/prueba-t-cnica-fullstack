@@ -15,7 +15,7 @@ export const Form = styled.form`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   width: 100%;
-  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 `;
@@ -24,12 +24,12 @@ export const FormTitle = styled.h2`
   margin-bottom: 1rem;
   font-size: 24px;
   color: #333;
-  text-align: center; /* Centra el título dentro de la card */
+  text-align: center; 
 `;
 
 export const FormGroup = styled.div`
   margin-bottom: 1rem;
-  width: 100%; /* Asegura que el grupo de formulario ocupe el ancho completo */
+  width: 100%; 
 `;
 
 export const Label = styled.label`
@@ -46,7 +46,7 @@ export const Input = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+  box-sizing: border-box; 
   &:focus {
     border-color: #007bff;
     outline: none;
@@ -72,5 +72,5 @@ export const ErrorMessage = styled.p`
   color: red;
   font-size: 14px;
   margin-bottom: 1rem;
-  text-align: center; /* Centra el mensaje de error dentro de la card */
+  text-align: center; 
 `;

@@ -17,12 +17,12 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          
+
           <Route element={<ProtectedRoute />}>
             <Route path='/addcripto' element={<AddCripto />} />
             <Route path='/editcripto/:id' element={<EditCripto />} />
           </Route>
-          
+
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

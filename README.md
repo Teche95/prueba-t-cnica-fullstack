@@ -12,8 +12,8 @@ Este proyecto es es una aplicación web que consta de un backend y un frontend, 
 2. Iniciar el Backend:
 
     Navega a la carpeta raíz del proyecto.
-Instala las dependencias: `npm install`.
-Inicia el servidor: `npm run dev`.
+    Instala las dependencias: `npm install`.
+    Inicia el servidor: `npm run dev`.
 
 3. Iniciar el Frontend:
 
@@ -21,4 +21,4 @@ Inicia el servidor: `npm run dev`.
 Instala las dependencias: `npm install`.
 Inicia la aplicación: `npm run dev`.
 
-5. Abre el navegador y navega a `http://localhost:3000`.
+5. Abre el navegador y navega a `http://localhost:5173`.

@@ -4,13 +4,15 @@ import { Button, Form, FormContainer, FormGroup, FormTitle, Input, Label } from 
 import { useQuery } from 'react-query';
 
 const EditCryptoForm = () => {
+
   const { id } = useParams();
-  const navigate = useNavigate(); // Para redirigir después de la edición
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     nombre: '',
-    precioCompra: '',
-    ticket: '',
-    cantidadComprada: '',
+    precio_de_compra: '',
+    ticker: '',
+    cantidad_comprada: '',
   });
 
   const { data: crypto } = useQuery(['crypto', id], async () => {
@@ -23,9 +25,9 @@ const EditCryptoForm = () => {
     if (crypto) {
       setFormData({
         nombre: crypto.nombre,
-        precioCompra: crypto.precio_de_compra,
-        ticket: crypto.ticker,
-        cantidadComprada: crypto.cantidad_comprada,
+        precio_de_compra: crypto.precio_de_compra,
+        ticker: crypto.ticker,
+        cantidad_comprada: crypto.cantidad_comprada,
       });
     }
   }, [crypto]);
@@ -47,8 +49,7 @@ const EditCryptoForm = () => {
         credentials: 'include',
       });
       if (response.ok) {
-        // Redirigir a la página de listado o detalle después de la edición
-        navigate('/'); // Cambia esto a la ruta deseada
+        navigate('/');
       } else {
         console.error('Error al actualizar la cripto');
       }
@@ -72,34 +73,34 @@ const EditCryptoForm = () => {
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="precioCompra">Precio de Compra</Label>
+          <Label htmlFor="precio_de_compra">Precio de Compra</Label>
           <Input
             type="number"
-            id="precioCompra"
-            name="precioCompra"
+            id="precio_de_compra"
+            name="precio_de_compra"
             step="0.01"
-            value={formData.precioCompra}
+            value={formData.precio_de_compra}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="ticket">Ticket</Label>
+          <Label htmlFor="ticker">Ticket</Label>
           <Input
             type="text"
-            id="ticket"
-            name="ticket"
-            value={formData.ticket}
+            id="ticker"
+            name="ticker"
+            value={formData.ticker}
             onChange={handleChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label htmlFor="cantidadComprada">Cantidad Comprada</Label>
+          <Label htmlFor="cantidad_comprada">Cantidad Comprada</Label>
           <Input
             type="number"
-            id="cantidadComprada"
-            name="cantidadComprada"
+            id="cantidad_comprada"
+            name="cantidad_comprada"
             step="0.01"
-            value={formData.cantidadComprada}
+            value={formData.cantidad_comprada}
             onChange={handleChange}
           />
         </FormGroup>

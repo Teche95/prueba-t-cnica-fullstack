@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FormContainer = styled.div`
   display: flex;
@@ -13,50 +13,35 @@ export const Form = styled.form`
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
-  box-sizing: border-box; 
-  display: flex;
-  flex-direction: column;
-`;
-
-export const FormTitle = styled.h2`
-  margin-bottom: 1rem;
-  font-size: 24px;
-  color: #333;
-  text-align: center; 
-`;
-
-export const FormGroup = styled.div`
-  margin-bottom: 1rem;
-  width: 100%; 
-`;
-
-export const Label = styled.label`
-  font-size: 14px;
-  margin-bottom: 0.5rem;
-  display: block;
-  font-weight: bold;
-  color: #333;
 `;
 
 export const Input = styled.input`
   width: 100%;
   padding: 10px;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
-  box-sizing: border-box; 
   &:focus {
     border-color: #007bff;
     outline: none;
   }
 `;
 
+export const Label = styled.label`
+  font-size: 14px;
+  margin-bottom: 4px;
+  display: block;
+  font-weight: bold;
+  color: #333;
+`;
+
 export const Button = styled.button`
   width: 100%;
   padding: 10px;
-  margin-top: 1rem;
+  margin-top: 16px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -68,9 +53,7 @@ export const Button = styled.button`
   }
 `;
 
-export const ErrorMessage = styled.p`
+export const Error = styled.p`
   color: red;
   font-size: 14px;
-  margin-bottom: 1rem;
-  text-align: center; 
 `;

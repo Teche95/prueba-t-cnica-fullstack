@@ -7,7 +7,6 @@ import Cookies from 'js-cookie';
 const Home = () => {
 
   const miCookie = Cookies.get('access_token');
-  console.log(miCookie)
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
@@ -24,7 +23,6 @@ const Home = () => {
   },
     {
       onSuccess: () => {
-        // Invalida o refresca los datos en caché después de la eliminación
         queryClient.invalidateQueries('criptos');
       },
       onError: (error) => {
@@ -32,7 +30,6 @@ const Home = () => {
       },
     }
   );
-
 
   const getCriptos = async () => {
     const res = await fetch("http://localhost:3000/crypto")
@@ -48,40 +45,31 @@ const Home = () => {
     return <Error>Error fetching data</Error>;
   }
 
-
   const handleDelete = async (id) => {
     mutation.mutate(id)
     console.log(`Eliminar criptomoneda con id: ${id}`);
-    // Lógica para eliminar la criptomoneda
   };
 
   const handleEdit = (id) => {
     navigate(`/editcripto/${id}`);
-    console.log(`Editar criptomoneda con id: ${id}`);
-    // Lógica para editar la criptomoneda
   };
 
   const handleAdd = () => {
     navigate('/addcripto');
-    console.log("Agregar nueva criptomoneda");
-    // Lógica para agregar una nueva criptomoneda
   };
 
   const handleLogin = () => {
     navigate('/login');
-    // console.log("Login");
   };
 
   const handleRegister = () => {
     navigate('/register');
-    console.log("Register");
   };
 
   const handleLogout = () => {
     Cookies.remove('access_token');
     window.location.reload()
   }
-  // console.log(data, status)
 
   return (
     <Container>

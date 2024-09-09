@@ -15,14 +15,11 @@ router.put("/crypto/:id", authRequired, updateCripto)
 
 router.delete("/crypto/:id", deleteCripto)
 
-// router.get("/protected", authRequired, protectedRoute)
-
 router.post("/login", login)
 
 router.post("/register", register)
 
 router.post("/logout", logout)
-
 
 
 export default router

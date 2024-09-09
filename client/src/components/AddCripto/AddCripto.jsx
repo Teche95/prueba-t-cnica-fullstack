@@ -3,17 +3,12 @@ import { Button, ErrorMessage, Form, FormContainer, FormGroup, FormTitle, Input,
 import { useQueryClient, useMutation } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
-// {
-//   "nombre": "Cardano",
-//   "precio_de_compra":1.2,
-//   "ticker": "ADA",
-//   "cantidad_comprada": 500
-// }
 
 const AddCryptoForm = () => {
+
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  // const token = req.cookies.access_token;
+
   const mutation = useMutation(async (newData) => {
     // Función que realiza la solicitud POST
     const res = await fetch('http://localhost:3000/crypto', {
@@ -39,16 +34,12 @@ const AddCryptoForm = () => {
     }
   );
 
-  // const mutation = useMutation(createUser)
-
   const [formData, setFormData] = useState({
     nombre: '',
     precioCompra: '',
     ticket: '',
     cantidadComprada: '',
   });
-  console.log(formData)
-
 
   const [error, setError] = useState('');
 
@@ -60,16 +51,12 @@ const AddCryptoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Validación simple
     if (!formData.nombre || !formData.precioCompra || !formData.ticket || !formData.cantidadComprada) {
       setError('Por favor, complete todos los campos.');
       return;
     }
     mutation.mutate(formData)
-    // Lógica para enviar los datos
-    console.log('Formulario enviado:', formData);
 
-    // Limpiar el formulario después del envío
     if (!mutation.isError) {
       setFormData({
         nombre: '',

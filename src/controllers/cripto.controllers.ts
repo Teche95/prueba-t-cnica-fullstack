@@ -3,32 +3,12 @@ import { Cripto } from "../entities/Cripto"
 import { Users } from "../entities/Users"
 import jwt from "jsonwebtoken"
 import { SECRET_JWT_KEY } from "../config"
-// import cookieParser from "cookie-parser"
 import bcrypt from "bcrypt"
 
-
-
-// {
-//     "email": "a@a.com",
-//     "password": "centinela"
-//   }
-
-// {
-//     "username": "test4",
-//     "email": "juliantecheira@gmail.com",
-//     "password": "centinela"
-//   }
-
-// {
-//     "nombre":"holaa", 
-//     "ticker":28, 
-//     "precio_de_compra":50,
-//     "cantidad_comprada":10
-//    }
-
 export const addCripto = async (req: Request, res: Response) => {
+
     const { nombre, ticket, precioCompra, cantidadComprada } = req.body
-    console.log("body backend", req.body)
+
     try {
 
         const cripto = new Cripto()
@@ -45,8 +25,6 @@ export const addCripto = async (req: Request, res: Response) => {
     } catch (error) {
         return res.status(500).json({ message: error })
     }
-
-
 }
 
 export const getCripto = async (req: Request, res: Response) => {
@@ -61,9 +39,9 @@ export const getCripto = async (req: Request, res: Response) => {
 export const getCriptoById = async (req: Request, res: Response) => {
     const { id } = req.params
     try {
-
         const criptoById = await Cripto.findOneBy({ id: Number(id) })
         if (!criptoById) return res.status(404).json({ message: "cripto not found" })
+
         return res.json(criptoById)
 
     } catch (error) {
@@ -72,7 +50,7 @@ export const getCriptoById = async (req: Request, res: Response) => {
 }
 
 export const updateCripto = async (req: Request, res: Response) => {
-    // console.log(req.params)
+
     const { nombre, ticker, precio_de_compra, cantidad_comprada } = req.body
     const { id } = req.params
 
@@ -85,13 +63,10 @@ export const updateCripto = async (req: Request, res: Response) => {
         cripto.ticker = ticker
         cripto.precio_de_compra = precio_de_compra
         cripto.cantidad_comprada = cantidad_comprada
+        cripto.cantidad_invertida = precio_de_compra * cantidad_comprada
 
         await cripto.save()
-        // let a = await Cripto.update({ id: Number(id) }, req.body)
-
-        // console.log("a", a)
-        // console.log(cripto)
-
+      
         return res.json("cripto updated")
     } catch (error) {
         return res.status(500).json({ message: error })
@@ -109,8 +84,6 @@ export const deleteCripto = async (req: Request, res: Response) => {
             return res.status(500).json({ message: error.message })
         }
     }
-
-
 }
 
 export const login = async (req: Request, res: Response) => {
@@ -151,7 +124,7 @@ export const register = async (req: Request, res: Response) => {
 
         const userCreated = await user.save()
 
-        const token = jwt.sign({ id: userCreated.id, username }, SECRET_JWT_KEY, { expiresIn: "1h" })
+        const token = jwt.sign({ id: userCreated.id, username }, SECRET_JWT_KEY, { expiresIn: "7h" })
         res.cookie("access_token", token, {
             // httpOnly: true,
             // secure: process.env.NODE_ENV === 'production',
