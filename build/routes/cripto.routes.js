@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const cripto_controllers_1 = require("../controllers/cripto.controllers");
+const validateToken_1 = require("../middlewares/validateToken");
+const router = (0, express_1.Router)();
+router.post("/crypto", cripto_controllers_1.addCripto);
+router.get("/crypto", cripto_controllers_1.getCripto);
+router.put("/crypto/:id", cripto_controllers_1.updateCripto);
+router.delete("/crypto/:id", cripto_controllers_1.deleteCripto);
+router.post("/login", cripto_controllers_1.login);
+router.post("/register", cripto_controllers_1.register);
+router.get("/protected", validateToken_1.authRequired, cripto_controllers_1.protectedRoute);
+router.post("/logout", cripto_controllers_1.logout);
+exports.default = router;
